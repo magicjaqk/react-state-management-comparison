@@ -1,3 +1,5 @@
+// JOTAI -- https://www.jotai.org/
+
 // This might traditionally be multiple files, but this will be a single file in this example for easy cloning.
 /**
  * This file is a template for a Chat component. Importantly, prop-drilling is not present at all.
