@@ -12,6 +12,7 @@
     "motion": "^10.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-use-measure": "^2.1.1",
     "valtio": "^1.13.2",
     "zustand": "^4.5.2"
   },

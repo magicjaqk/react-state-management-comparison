@@ -8,10 +8,12 @@ type Props = {
 };
 
 const ManagerControl = (props: Props) => {
+  const ref = React.useRef<HTMLDivElement>(null!);
+
   // Initialize sidebar animation
   React.useEffect(() => {
     animate(
-      "#sidebar",
+      ref.current,
       {
         x: "-100%",
       },
@@ -23,7 +25,7 @@ const ManagerControl = (props: Props) => {
 
   const handleMouseEnter = () => {
     animate(
-      "#sidebar",
+      ref.current,
       {
         x: "0%",
       },
@@ -36,7 +38,7 @@ const ManagerControl = (props: Props) => {
 
   const handleMouseLeave = () => {
     animate(
-      "#sidebar",
+      ref.current,
       {
         x: "-100%",
       },
@@ -49,7 +51,7 @@ const ManagerControl = (props: Props) => {
 
   return (
     <div
-      id="sidebar"
+      ref={ref}
       className="fixed inset-y-0 left-0 w-40 bg-slate-700 p-4 shadow"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

@@ -7,6 +7,7 @@
 
 // IMPORTS
 import React from "react";
+import ChatMessage from "./ChatMessage";
 
 /**
  * Chat component
@@ -14,7 +15,7 @@ import React from "react";
 
 export const Chat = () => {
   return (
-    <div className="mx-auto flex h-screen max-w-2xl flex-col overflow-clip">
+    <div className="mx-auto flex h-screen max-w-2xl flex-col overflow-clip px-4">
       {/* Chat Header -- Displays time and username */}
       <ChatHeader />
 
@@ -40,9 +41,10 @@ const ChatHeader = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       const date = new Date();
+      const dateString = date.toLocaleTimeString();
 
       // Set the time state to the current time using the state management solution of your choice.
-      setTime(date.toLocaleTimeString());
+      setTime(dateString);
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -54,24 +56,19 @@ const ChatHeader = () => {
   );
 };
 
-type Message = {
+export type Message = {
   text: string;
   time: string;
 };
 const ChatStream = () => {
   const messages: Message[] = []; // Use jotai, zustand, or valtio get the messages state
+
   return (
     <div className="relative flex flex-grow flex-col-reverse overflow-clip">
       <div className="max-h-full overflow-scroll">
         {/* Because chat messages don't contain any reactivity, it's pretty simple to just style them directly here without a component (styles won't be used elsewhere) */}
         {messages.map((message, index) => (
-          <div
-            key={index}
-            className="my-2 flex w-full flex-col rounded-lg bg-orange-600 px-2 py-4"
-          >
-            <div className="text-slate-100">{message.text}</div>
-            <div className="text-xs text-orange-200">{message.time}</div>
-          </div>
+          <ChatMessage key={index} message={message} />
         ))}
       </div>
     </div>

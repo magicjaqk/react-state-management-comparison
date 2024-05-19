@@ -12,11 +12,9 @@ const App = () => {
 
   return (
     <div className="relative h-screen w-full bg-slate-800 text-slate-100">
-      {/* {manager === "zustand" && <ZustandChat />}
+      {manager === "zustand" && <ZustandChat />}
       {manager === "jotai" && <JotaiChat />}
-      {manager === "valtio" && <ValtioChat />} */}
-
-      <Chat />
+      {manager === "valtio" && <ValtioChat />}
 
       {/* Manager Control */}
 
